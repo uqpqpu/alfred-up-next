@@ -4,7 +4,9 @@ require "alfred"
 require './lib/dacpclient'
 require 'socket'
 
-pin = ARGV[0].split("")
-client = DACPClient.new "Alfred", 'localhost', 3689
-client.login pin
-puts "Pairing Successful!"
+if ARGV[0].count == 4
+  pin = ARGV[0].split("")
+  client = DACPClient::Client.new "Alfred", 'localhost', 3689
+  client.pair pin
+  puts "Pairing Successful!"
+end
